@@ -1,6 +1,6 @@
 <h1>Listing articles</h1>
- <%= link_to 'New article', new_article_path, class: "btn btn-lg btn-success" %><hr>
-
+ <%= link_to 'New article', new_article_path, class: "btn btn-lg btn-success" %>
+  <h2>Click an article title to view its comments</h2><hr>
  
   <% @articles.each do |article| %>
     <div class="panel panel-success">
@@ -9,8 +9,12 @@
       </div>
       <div class="panel-body">
         <%= article.text %><hr>
-        <%= link_to 'Edit', edit_article_path(article), class: "btn btn-sm btn-warning" %>
-        <%= link_to 'Destroy', article_path(article), class: "btn btn-sm btn-danger", method: :delete, data: {confirm: 'Are you sure?'} %>
+        <% if current_user %>
+          <% if current_user.id == article.user_id %>
+            <%= link_to 'Edit', edit_article_path(article), class: "btn btn-sm btn-warning" %>
+            <%= link_to 'Destroy', article_path(article), class: "btn btn-sm btn-danger", method: :delete, data: {confirm: 'Are you sure?'} %>
+          <% end %>
+        <% end %>  
       </div>
     </div>
   <% end %>
