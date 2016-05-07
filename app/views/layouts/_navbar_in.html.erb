@@ -1,0 +1,14 @@
+<header class="navbar navbar-fixed-top navbar-default">
+    <dev class="container">
+      <%= link_to "My Blog", root_path, class: "btn btn-lg btn-success", id: "logo" %>
+      <div class="nav-item">
+        <%= link_to "Welcome, " + current_user.name, "", class: "btn btn-default btn-success" %>
+      </div>
+      <div class="nav-item">
+        <%= link_to "Log out", logout_path, method: "delete", class: "btn btn-default btn-warning" %>
+      </div>
+      <div class="nav-item">
+        <%= link_to "View Articles", articles_path, class: "btn btn-default btn-warning" %>
+      </div>
+    </dev>
+  </header>
