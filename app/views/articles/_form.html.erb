@@ -14,18 +14,17 @@
     </div>
   <% end %>
  
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
- 
-  <p>
-    <%= f.label :text %><br>
-    <%= f.text_area :text %>
-  </p>
- 
-  <p>
-    <%= f.submit %>
-  </p>
- 
+ <div class="well">
+      <p>
+        <%= f.label :title %><br>
+        <%= f.text_field :title %>
+      </p>
+     
+      <p>
+        <%= f.label :text %><br>
+        <%= f.text_area :text %>
+      </p>
+     
+      <%= f.submit "Update Article",  class: "btn btn-lg btn-success" %>
+ </div>
 <% end %>

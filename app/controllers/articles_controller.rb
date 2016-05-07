@@ -10,7 +10,8 @@ class ArticlesController < ApplicationController
   end
   
   def new
-    @article = Article.new
+    @user = User.find(current_user.id)
+    @article = @user.articles.new
   end
   
   def edit
@@ -18,7 +19,8 @@ class ArticlesController < ApplicationController
   end
   
   def create
-    @article = Article.new(article_params)
+    @user = User.find(current_user.id)
+    @article = @user.articles.new(article_params)
     
     if @article.save
       redirect_to @article
