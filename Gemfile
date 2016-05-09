@@ -37,6 +37,9 @@ group :development, :test do
   gem 'byebug'
   gem 'sqlite3'
   gem 'pry'
+  
+  #random sample data
+  gem 'faker'
 end
 
 group :production do
