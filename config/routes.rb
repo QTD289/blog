@@ -1,5 +1,13 @@
-Rails.application.routes.draw do
-  get 'welcome/index'
+# Rails.application.routes.draw do
+#   namespace :admin do
+#     resources :articles
+# resources :comments
+# resources :users
+
+#     root to: "articles#index"
+#   end
+
+  # get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -7,12 +15,20 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   Rails.application.routes.draw do
  
+    namespace :admin do
+      resources :articles
+      resources :comments
+      resources :users
+  
+      root to: "articles#index"
+    end
+
     resources :articles do
       resources :comments
-  end
+    end
  
-  root 'welcome#index'
-  end
+    root 'welcome#index'
+  
   
   get 'signup'  => 'users#new' 
   resources :users

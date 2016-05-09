@@ -54,3 +54,7 @@ end
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bcrypt'
+
+#Administrate
+gem "administrate", "~> 0.2.0"
+gem "administrate-field-image"
