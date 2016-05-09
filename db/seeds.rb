@@ -14,7 +14,7 @@ end
 
 #Create 100 random Articles for all User
 for i in 1..100 do
-  Article.create(title: Faker::Address.country, text: Faker::Lorem.paragraphs, user_id: (1+i%40), created_at: rand(2.years).seconds.ago)
+  Article.create(title: Faker::Address.country, text: Faker::Lorem.paragraphs, user_id: (1+i%User.all.size), created_at: rand(2.years).seconds.ago)
 end
 
 #Create 1 Comment for each user
