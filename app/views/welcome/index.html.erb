@@ -16,9 +16,9 @@
     <div class="well" id="billboard">
       <h2 style="margin: 0 0 10 0"><strong>Top comment articles</strong></h2>
       <ul class="list-group">
-        <% Article.all.each do |f| %>
+        <% Article.joins(:comments).group("articles.id").order("count(comments.id) desc").each do |f| %>
           <li class="list-group-item ">
-            <span class="badge"><%= f.comments.all.size %> Comments</span>
+            <span class="badge"><%= f.comments.size %> Comments</span>
             <%= link_to f.title, article_path(f), style: "color:#009900" %> - <em><%= User.find(f.user_id).name %></em>
         </li>
         <% end %>
@@ -32,7 +32,7 @@
     <div class="well" id="billboard">
       <h2 style="margin: 0 0 10 0"><strong>Top recent articles</strong></h2>
       <ul class="list-group">
-        <% Article.all.each do |f| %>
+        <% Article.all.reverse.each do |f| %>
           <li class="list-group-item ">
             <span class="badge"><%= time_ago_in_words(f.created_at) %> ago</span>
             <%= link_to f.title, article_path(f), style: "color:#009900" %> - <em><%= User.find(f.user_id).name %></em>
