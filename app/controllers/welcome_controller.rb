@@ -1,9 +1,7 @@
 class WelcomeController < ApplicationController
   def index
-    
+    @articles = Article.all
+    @cmts = @articles.sort_by{|f| f.comments.size}
   end
-  
-  def comments_count
-    Article.find(params[:id]).comments.size
-  end
+
 end
