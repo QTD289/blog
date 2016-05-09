@@ -11,7 +11,7 @@ class CommentDashboard < Administrate::BaseDashboard
     article: Field::BelongsTo,
     user: Field::BelongsTo,
     id: Field::Number,
-    commenter: Field::String,
+    # commenter: Field::String,
     body: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -26,7 +26,7 @@ class CommentDashboard < Administrate::BaseDashboard
     :article,
     :user,
     :id,
-    :commenter,
+    # :commenter,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -35,7 +35,7 @@ class CommentDashboard < Administrate::BaseDashboard
     :article,
     :user,
     :id,
-    :commenter,
+    # :commenter,
     :body,
     :created_at,
     :updated_at,
@@ -47,7 +47,7 @@ class CommentDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :article,
     :user,
-    :commenter,
+    # :commenter,
     :body,
   ].freeze
 

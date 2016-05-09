@@ -7,9 +7,11 @@ class UsersController < ApplicationController
   def create 
     @user = User.new(user_params) 
     if @user.save 
+      flash[:success] = "Your user is created!"
       session[:user_id] = @user.id 
       redirect_to '/' 
     else 
+      flash[:danger] = "Name is already taken, please choose another name."
       redirect_to '/signup' 
     end 
   end
