@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>QTD Blog</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+  <head>
+    <title>QTD Blog</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    
+  </head>
   
-</head>
-<body>
-
-  <% if current_user %>
-    <%= render '/layouts/navbar_in' %>
-  <% else %> 
-    <%= render '/layouts/navbar_out' %>
-  <% end %>
-
-  <%= render 'layouts/messages' %>
-  <%= yield %>
-
-</body>
+  <body>
+    <% if current_user %>
+      <% if current_user.name == 'admin' %>
+        <%= link_to "Admin Page", admin_root_path, class: "btn btn-lg btn-danger" %>
+      <% end %>
+    <% end %>
+    
+    <% if current_user %>
+      <%= render '/layouts/navbar_in' %>
+    <% else %> 
+      <%= render '/layouts/navbar_out' %>
+    <% end %>
+  
+    <%= render 'layouts/messages' %>
+    <%= yield %>
+  
+  </body>
 </html>

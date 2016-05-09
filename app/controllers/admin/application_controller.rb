@@ -6,10 +6,22 @@
 # you're free to overwrite the RESTful controller actions.
 module Admin
   class ApplicationController < Administrate::ApplicationController
+    before_action :authenticate_admin
     before_filter :authenticate_admin
 
     def authenticate_admin
       # TODO Add authentication logic here.
+      if session[:user_id]
+        if User.find(session[:user_id]).name == 'admin'
+          #Authorized
+        else
+          flash[:danger] = "You Are Not Authorized!"
+          redirect_to '/'
+        end
+      else
+        flash[:danger] = "You Are Not Authorized!"
+        redirect_to '/'
+      end
     end
 
     # Override this value to specify the number of elements to display at a time
